@@ -25,12 +25,17 @@ noteStringsLetters = ["C","D","E","F","G","A","B"]
 noteStringsNumbers = np.arange(0, 9).tolist()
 count = 0
 
+#Function for Note Making returns 1 in order to increase counter Var this could allow for note creation using a different data set if desired
+def MakeNote(count,String, Letter):
+    notesSounds.append(generate_music_note(noteStringsLetters[Letter]+str(noteStringsNumbers[String]),4,"Square"))
+    notesSounds[count].apply_gain(100)
+    return 1
+
 #Generating Musical Note Sounds C scale sharps flats non-inclusive
 for nString in range(9):
     for nLetter in range(7):
-        notesSounds.append(generate_music_note(noteStringsLetters[nLetter]+str(noteStringsNumbers[nString]),4,"Square"))
-        notesSounds[count].apply_gain(100)
-        count+=1
+        count += MakeNote(count,nString,nLetter)
+        
 
 #Note Class
 #Stores Sounds and the note Index info stored as Ints
@@ -86,5 +91,5 @@ for x in range (len(Notes)):
 
 # This plays your sorted list and prints them as the paired notes
 for x in range(63):
-    print(x,Notes[x].Octave,Notes[x].Letter, end=" ")
+    print(x,Notes[x].Octave,Notes[x].Letter)
     Notes[x].Sound.play()   
