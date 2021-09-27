@@ -77,19 +77,26 @@ for scramble in range(63):
 for x in range (len(Notes)):
     for y in range (len(Notes)-1):
         if Notes[y].Octave > Notes[y+1].Octave:
+            print("Note "+str(Notes[y].Octave),str(Notes[y].Letter)+" Swiched With "+str(Notes[y+1].Octave),str(Notes[y+1].Letter))
             blank = Notes[y+1]
             Notes[y+1] = Notes[y]
             Notes[y] = blank
+        #Notes[y].Sound.play() # This is for demonstration purposes only -- no need in final product
+
+
+print("Octaves Sorted")
 
 for x in range (len(Notes)):
     for y in range (len(Notes)-1):
         if Notes[y].Letter > Notes[y+1].Letter and Notes[y].Octave == Notes[y+1].Octave:
-                    blank = Notes[y+1]
-                    Notes[y+1] = Notes[y]
-                    Notes[y] = blank        
-                    Notes[y].Sound.play() # This is for demonstration purposes only -- no need in final product
+            print("Note "+str(Notes[y].Octave),str(Notes[y].Letter)+" Swiched With "+str(Notes[y+1].Octave),str(Notes[y+1].Letter))
+            blank = Notes[y+1]
+            Notes[y+1] = Notes[y]
+            Notes[y] = blank        
+        #Notes[y].Sound.play() # This is for demonstration purposes only -- no need in final product
 
-# This plays your sorted list and prints them as the paired notes
+print("Letters Sorted")
+
+# This plays your sorted list
 for x in range(63):
-    print(x,Notes[x].Octave,Notes[x].Letter)
     Notes[x].Sound.play()   
